@@ -3,7 +3,7 @@ LOG_DIR='/var/log/'
 LOG_FILE='del_old_images.log'
 PARAM=$1
 DATE_TIME=$(date +%Y-%m-%d-%H-%M)
-IMAGE_LIST= "docker images | awk '{print $3,$4,$5}'"
+IMAGE_LIST= docker images | awk '{print $2,$3,$4,$5}'
 
 
 function write_log {
