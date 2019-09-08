@@ -22,7 +22,7 @@ if [ ! -f $LOG_DIR$LOG_FILE ];
 	touch $LOG_DIR$LOG_FILE;
 	echo Done!
 fi
-
+delete
 write_log 1234
 
 write_log 123
