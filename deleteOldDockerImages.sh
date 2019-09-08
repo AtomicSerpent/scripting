@@ -12,7 +12,7 @@ function write_log {
 
 
 function delete {
-write_log 'Getting list '$IMAGE_LIST
+write_log 'Getting list $IMAGE_LIST'
 }
 
 if [ ! -f $LOG_DIR$LOG_FILE ];
