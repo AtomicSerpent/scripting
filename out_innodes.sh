@@ -26,6 +26,6 @@ if (($innode > 70)); then
     echo -e "\n$DATE_TIME\nDelete /var/lib/docker\n" |tee -a $LOG_DIR$LOG_FILE
       rm -rf /var/lib/docker
     echo -e "\n$DATE_TIME\nDone!\n" |tee -a $LOG_DIR$LOG_FILE
-      service docker stop
+      service docker start
     echo -e "\n$DATE_TIME\n!!!!Docker Service started!!!!!\n" |tee -a $LOG_DIR$LOG_FILE
 fi
