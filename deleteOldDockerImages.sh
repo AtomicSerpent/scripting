@@ -17,7 +17,11 @@ function delete {
 
 	echo Next images will be delete
 
-	list=$(docker images | grep " [$PARAM_DELETE]* ago" | awk '{print $3}')
+	if [ $1 != "all"];then
+		list=$(docker images | grep " [$PARAM_DELETE]* ago" | awk '{print $3}')
+	else
+		list=$(docker images | awk '{print $3}')
+	fi
 
 	for value in $list
 		do
@@ -35,18 +39,29 @@ if [ ! -f $LOG_DIR$LOG_FILE ];then
 	echo Done!
 fi
 
+#Checking if parameter present
+if [ -z $PARAM_DELETE ]; then
+	write_log "Enter Parameter Please"
+	exit 1
+fi 
+
 #Checking parameters
 if [ $PARAM_DELETE == "weeks" ] || [ $PARAM_DELETE == "months" ] ;then
 	delete $PARAM_DELETE
 
+elif [ $PARAM_DELETE == "mv" ];then
+	delete "[months|weeks]"
+
 elif [ $PARAM_DELETE == "all" ];then
-	echo ALL images will be deleted
+	write_log "ALL images will be deleted"
+	delete $PARAM_DELETE
 
 elif [ $PARAM_DELETE == "help" ];then
 	echo -e  "\e[1;33mUse <weeks> to delete image weeks of antiquity\e[0m"
 	echo -e  "\e[1;33mUse <months> to delete month image of antiquity\e[0m"
 	echo -e  "\e[1;33mUse <mw> to delete month and weeks of antiquity\e[0m"
 	echo -e  "\e[1;33mUse the range <1..100> to store first N images \e[0m"
+	echo -e  "\e[1;33mUse <all> to delete all images\e[0m"
 else
 	echo -e  "\e[1;31mWrong Parameter $PARAM_DELETE\e[0m" 
 fi
