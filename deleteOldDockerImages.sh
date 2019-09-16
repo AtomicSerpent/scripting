@@ -3,7 +3,7 @@ LOG_DIR='/var/log/'
 LOG_FILE='del_old_images.log'
 PARAM_DELETE=$1
 DATE_TIME=$(date +%Y-%m-%d-%H-%M)
-#IMAGE_LIST= docker images | awk '{print $2,$3,$4,$5}'
+
 
 
 function write_log {
@@ -26,7 +26,7 @@ function delete {
 	for value in $list
 		do
 		echo Deleting $value | tee -a $LOG_DIR$LOG_FILE
-		#docker rmi $value
+		docker rmi $value
 	done
 }
 
@@ -60,7 +60,6 @@ elif [ $PARAM_DELETE == "help" ];then
 	echo -e  "\e[1;33mUse <weeks> to delete image weeks of antiquity\e[0m"
 	echo -e  "\e[1;33mUse <months> to delete month image of antiquity\e[0m"
 	echo -e  "\e[1;33mUse <mw> to delete month and weeks of antiquity\e[0m"
-	echo -e  "\e[1;33mUse the range <1..100> to store first N images \e[0m"
 	echo -e  "\e[1;33mUse <all> to delete all images\e[0m"
 else
 	echo -e  "\e[1;31mWrong Parameter $PARAM_DELETE\e[0m" 
