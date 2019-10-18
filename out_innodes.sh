@@ -21,11 +21,11 @@ fi
 innode = $(df -hi | sed -n '4p' | awk '{print $5}' | grep -v U | cut -d% -f1)
 
 if (($innode > 70)); then
-  	echo -e "\n$DATE_TIME\nStoping Docker Services\n" |tee -a $LOG_DIR$LOG_FILE
-      service docker stop
-    echo -e "\n$DATE_TIME\nDelete /var/lib/docker\n" |tee -a $LOG_DIR$LOG_FILE
-      rm -rf /var/lib/docker
-    echo -e "\n$DATE_TIME\nDone!\n" |tee -a $LOG_DIR$LOG_FILE
-      service docker start
-    echo -e "\n$DATE_TIME\n!!!!Docker Service started!!!!!\n" |tee -a $LOG_DIR$LOG_FILE
+	echo -e "\n$DATE_TIME\nStoping Docker Services\n" | tee -a $LOG_DIR$LOG_FILE
+	service docker stop
+	echo -e "\n$DATE_TIME\nDelete /var/lib/docker\n" | tee -a $LOG_DIR$LOG_FILE
+ 	rm -rf /var/lib/docker
+ 	echo -e "\n$DATE_TIME\nDone!\n" |tee -a $LOG_DIR$LOG_FILE
+ 	service docker start
+	echo -e "\n$DATE_TIME\n!!!!Docker Service started!!!!!\n" | tee -a $LOG_DIR$LOG_FILE
 fi
