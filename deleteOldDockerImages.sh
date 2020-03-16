@@ -49,7 +49,7 @@ fi
 if [ $PARAM_DELETE == "weeks" ] || [ $PARAM_DELETE == "months" ] ;then
 	delete $PARAM_DELETE
 
-elif [ $PARAM_DELETE == "mv" ];then
+elif [ $PARAM_DELETE == "mw" ];then
 	delete "[months|weeks]"
 
 elif [ $PARAM_DELETE == "all" ];then
