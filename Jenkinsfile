@@ -1,9 +1,9 @@
 pipeline {
-    agent { docker { image 'node:latest' } }
+    agent { docker { image 'python:latest' } }
     stages {
         stage('build') {
             steps {
-                sh 'npm --version'
+                sh 'python --version'
             }
         }
     }
