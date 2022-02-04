@@ -1,4 +1,0 @@
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-zmey                latest              0bac7de50f6b        3 months ago        949MB
-prom/prometheus     <none>              5d62a6125e7e        3 months ago        123MB
-python              3.7.3               a4cc999cf2aa        4 months ago        929MB
